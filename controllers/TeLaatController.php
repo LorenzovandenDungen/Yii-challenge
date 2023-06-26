@@ -17,7 +17,12 @@ class TelaatController extends Controller
         ]);
 
         return $this->render('index', [
-           
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
-                       
-            
+    // Andere actie methoden komen hier (actionView, actionCreate, actionUpdate, actionDelete)
+
+} // einde van TelaatController klasse
+
+?>
