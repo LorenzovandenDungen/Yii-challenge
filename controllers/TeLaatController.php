@@ -16,8 +16,19 @@ class TelaatController extends Controller
             'query' => Telaat::find(),
         ]);
 
+        // Fetch statistics from the database
+        $sql = "SELECT MAX(id) AS hoogste, AVG(id) AS gemiddelde, COUNT(id) AS totaal FROM telaat_komers";
+        $result = Yii::$app->db->createCommand($sql)->queryOne();
+
+        $hoogste = $result['hoogste'];
+        $gemiddelde = $result['gemiddelde'];
+        $totaal = $result['totaal'];
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'hoogste' => $hoogste,
+            'gemiddelde' => $gemiddelde,
+            'totaal' => $totaal,
         ]);
     }
 
